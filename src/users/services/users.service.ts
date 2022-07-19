@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common'
+
+import { User } from '../entities/user.entity'
 import { CreateUserInput } from '../dto/create-user.input'
 import { UpdateUserInput } from '../dto/update-user.input'
+
 import { UsersFactoryService } from './users.factory.service'
 import { UsersQueryService } from './users.query.service'
 
@@ -11,23 +14,23 @@ export class UsersService {
     private usersFactoryService: UsersFactoryService
   ) {}
 
-  create(createUserInput: CreateUserInput) {
+  create(createUserInput: CreateUserInput): Promise<User> {
     return this.usersFactoryService.create(createUserInput)
   }
 
-  findAll() {
+  findAll(): Promise<User[]> {
     return this.usersQueryService.findAll()
   }
 
-  findOne(id: string) {
+  findOne(id: string): Promise<User> {
     return this.usersQueryService.findById(id)
   }
 
-  update(updateUserInput: UpdateUserInput) {
+  update(updateUserInput: UpdateUserInput): Promise<User> {
     return this.usersFactoryService.update(updateUserInput.id, updateUserInput)
   }
 
-  remove(id: string) {
+  remove(id: string): Promise<string> {
     return this.usersFactoryService.remove(id)
   }
 }
