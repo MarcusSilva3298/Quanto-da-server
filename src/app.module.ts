@@ -6,6 +6,7 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { PrismaModule } from './prisma/prisma.module'
 import { UsersModule } from './users/users.module'
+import { SharedModule } from './shared/shared.module'
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { UsersModule } from './users/users.module'
       autoSchemaFile: join(process.cwd(), 'src/schema.gql')
     }),
     PrismaModule,
-    UsersModule
+    UsersModule,
+    SharedModule
   ],
   controllers: [AppController],
   providers: [AppService]
