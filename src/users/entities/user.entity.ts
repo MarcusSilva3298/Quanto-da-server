@@ -14,10 +14,10 @@ export class User {
   @Field()
   password: string
 
-  @Field()
+  @Field({ nullable: true })
   phone: string
 
-  @Field()
+  @Field({ nullable: true })
   first_name: string
 
   @Field({ nullable: true })
