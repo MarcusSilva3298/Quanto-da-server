@@ -11,12 +11,12 @@ export class CreateUserInput {
   @Field()
   password: string
 
-  @Field()
-  phone: string
-
-  @Field()
-  first_name: string
+  @Field({ nullable: true })
+  phone?: string
 
   @Field({ nullable: true })
-  last_name: string
+  first_name?: string
+
+  @Field({ nullable: true })
+  last_name?: string
 }
