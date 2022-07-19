@@ -19,7 +19,8 @@ model users {
 
   phone      String
   first_name String
-  Last_name  String?
+
+  last_name String?
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
