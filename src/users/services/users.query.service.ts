@@ -1,16 +1,36 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { User } from '../entities/user.entity'
+import { UsersRepository } from '../users.repository'
 
 @Injectable()
 export class UsersQueryService {
-  findAll() {
-    return `This action returns all users`
+  constructor(private usersRepository: UsersRepository) {}
+
+  findAll(): Promise<User[]> {
+    return this.usersRepository.list()
   }
 
-  findById(id: string) {
-    return `This action returns a #${id} user`
+  async findById(id: string): Promise<User> {
+    const user = await this.usersRepository.findById(id)
+
+    if (!user) throw new NotFoundException(`User not found with id:${id}`)
+
+    return user
   }
 
-  findByEmail(email: string) {}
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.usersRepository.findByEmail(email)
 
-  findByCPF(cpf: string) {}
+    if (!user) throw new NotFoundException(`User not found with email:${email}`)
+
+    return user
+  }
+
+  async findByCPF(cpf: string): Promise<User> {
+    const user = await this.usersRepository.findByCPF(cpf)
+
+    if (!user) throw new NotFoundException(`User not found with cpf:${cpf}`)
+
+    return user
+  }
 }
