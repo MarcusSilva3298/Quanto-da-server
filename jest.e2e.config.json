@@ -1,0 +1,13 @@
+{
+  "preset": "ts-jest",
+  "rootDir": "src",
+  "collectCoverage": true,
+  "testRegex": ".*\\.spec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "collectCoverageFrom": ["**/services/*.ts", "**/*.resolver.ts"],
+  "coveragePathIgnorePatterns": ["src/prisma", "src/shared"],
+  "coverageDirectory": "../coverage-e2e",
+  "testEnvironment": "node"
+}
