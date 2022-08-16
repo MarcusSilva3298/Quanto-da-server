@@ -50,11 +50,9 @@ export class UsersFactoryService {
     return await this.usersRepository.update(id, updateUserInput)
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<User> {
     await this.usersQuery.findById(id)
 
-    await this.usersRepository.remove(id)
-
-    return `User with id:${id} deleted`
+    return await this.usersRepository.remove(id)
   }
 }

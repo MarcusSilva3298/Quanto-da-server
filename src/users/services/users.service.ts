@@ -30,7 +30,7 @@ export class UsersService {
     return this.usersFactoryService.update(updateUserInput.id, updateUserInput)
   }
 
-  remove(id: string): Promise<string> {
+  remove(id: string): Promise<User> {
     return this.usersFactoryService.remove(id)
   }
 }
