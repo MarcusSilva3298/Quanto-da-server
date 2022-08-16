@@ -30,7 +30,7 @@ describe('UsersFactory - Update User', () => {
     const user = new UserMock()
     jest.spyOn(query, 'findById').mockImplementationOnce(async () => user)
 
-    const updatedUser = user.update(true)
+    const updatedUser = user.update({ last_name: true })
     jest
       .spyOn(repository, 'update')
       .mockImplementationOnce(async () => updatedUser)
@@ -52,7 +52,7 @@ describe('UsersFactory - Update User', () => {
     const user = new UserMock()
     jest.spyOn(query, 'findById').mockImplementationOnce(async () => user)
 
-    const updatedUser = user.update(false, true)
+    const updatedUser = user.update({ first_name: true })
     jest
       .spyOn(repository, 'update')
       .mockImplementationOnce(async () => updatedUser)
@@ -74,7 +74,7 @@ describe('UsersFactory - Update User', () => {
     const user = new UserMock()
     jest.spyOn(query, 'findById').mockImplementationOnce(async () => user)
 
-    const updatedUser = user.update(false, false, true)
+    const updatedUser = user.update({ phone: true })
     jest
       .spyOn(repository, 'update')
       .mockImplementationOnce(async () => updatedUser)
@@ -96,7 +96,11 @@ describe('UsersFactory - Update User', () => {
     const user = new UserMock()
     jest.spyOn(query, 'findById').mockImplementationOnce(async () => user)
 
-    const updatedUser = user.update(true, true, true)
+    const updatedUser = user.update({
+      first_name: true,
+      last_name: true,
+      phone: true
+    })
     jest
       .spyOn(repository, 'update')
       .mockImplementationOnce(async () => updatedUser)

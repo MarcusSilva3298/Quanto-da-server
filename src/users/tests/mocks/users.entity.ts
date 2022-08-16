@@ -26,7 +26,7 @@ export class UserMock extends User {
     this.updated_at = new Date()
   }
 
-  update(last_name = false, first_name = false, phone = false) {
+  update({ last_name = false, first_name = false, phone = false }) {
     if (last_name === true) this.last_name = faker.name.lastName()
     if (first_name === true) this.first_name = faker.name.firstName()
     if (phone === true) this.phone = faker.phone.number()
