@@ -18,6 +18,8 @@
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "yarn docker:up && yarn migrate:test && dotenv -e .env.test -- jest --config ./jest.e2e.config.json --runInBand --forceExit --detectOpenHandles || yarn docker:down",
+    "test:one": "jest src/users/tests/unit/users.factory.create.spec.ts --config ./jest.config.json --runInBand --forceExit --detectOpenHandles",
+    "test:one:e2e": "yarn docker:up && yarn migrate:test && dotenv -e .env.test -- jest src/users/tests/e2e/update-user.spec.ts --config ./jest.e2e.config.json --runInBand --forceExit --detectOpenHandles || yarn docker:down",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "migrate:dev": "dotenv -e .env.dev -- prisma migrate dev",
