@@ -32,8 +32,13 @@ describe('Users Factory - Remove', () => {
 
     jest.spyOn(repository, 'remove').mockImplementationOnce(async () => user)
 
-    expect(await service.remove(user.id)).toBe(
-      `User with id:${user.id} deleted`
+    expect(await service.remove(user.id)).toEqual(
+      expect.objectContaining({
+        id: user.id,
+        cpf: user.cpf,
+        email: user.email,
+        password: expect.any(String)
+      })
     )
   })
 })
