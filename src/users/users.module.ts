@@ -15,6 +15,7 @@ import { UsersResolver } from './users.resolver'
     UsersQueryService,
     UsersFactoryService,
     UsersRepository
-  ]
+  ],
+  exports: [UsersService, UsersRepository]
 })
 export class UsersModule {}
