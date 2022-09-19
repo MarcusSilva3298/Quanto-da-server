@@ -26,7 +26,7 @@ describe('Users Query - findOne', () => {
   it('Should not return user if id does not exist', async () => {
     jest.spyOn(repository, 'findById').mockImplementationOnce(async () => null)
 
-    await expect(service.findOne('123')).rejects.toThrowError(
+    await expect(service.findByID('123')).rejects.toThrowError(
       new NotFoundException(`User not found with id:123`)
     )
   })
@@ -35,7 +35,7 @@ describe('Users Query - findOne', () => {
     const user = new UserMock()
     jest.spyOn(repository, 'findById').mockImplementationOnce(async () => user)
 
-    expect(await service.findOne(user.id)).toEqual(
+    expect(await service.findByID(user.id)).toEqual(
       expect.objectContaining({
         id: user.id
       })

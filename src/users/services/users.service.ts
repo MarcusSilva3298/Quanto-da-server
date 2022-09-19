@@ -22,7 +22,7 @@ export class UsersService {
     return this.usersQueryService.findAll()
   }
 
-  findOne(id: string): Promise<User> {
+  findByID(id: string): Promise<User> {
     return this.usersQueryService.findById(id)
   }
 
@@ -32,5 +32,13 @@ export class UsersService {
 
   remove(id: string): Promise<User> {
     return this.usersFactoryService.remove(id)
+  }
+
+  findByEmail(email: string): Promise<User> {
+    return this.usersQueryService.findByEmail(email)
+  }
+
+  findByCPF(cpf: string): Promise<User> {
+    return this.usersQueryService.findByCPF(cpf)
   }
 }
